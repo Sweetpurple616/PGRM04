@@ -1,0 +1,47 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: #70CF51;
+    font-family: 'Press Start 2P', cursive;
+    color:white;
+    font-size:22px;
+    overflow:hidden;
+    margin:0px; padding:0px;
+    background-image: url(../images/kitchen.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body * {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+}
+
+splash {
+    font-size:2em;
+    cursor: pointer;
+    width:500px;
+    height:100px;
+    margin-top:calc(50vh - 50px);
+    margin-left:calc(50vw - 250px);
+    text-align:center;
+}
+
+rijst {
+    background-image: url(../images/sushi.png);
+    width:61px; height:71px;
+}
+
+player {
+    background-image: url(../images/panda.png);
+    width:100px; height:150px;
+}
+wall {
+    background-color:palevioletred;
+    height: 50px;
+    width: 50px;
+}
