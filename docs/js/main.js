@@ -6,6 +6,10 @@ var Items = (function () {
     Items.prototype.update = function () {
         this.rijst.update();
     };
+    Items.prototype.delete = function () {
+        this.rijst.delete();
+        console.log('ik delete alles');
+    };
     return Items;
 }());
 var Score = (function () {
@@ -16,16 +20,17 @@ var Score = (function () {
 var PlayScreen = (function () {
     function PlayScreen(g) {
         this.game = g;
+        console.log(this.game);
         this.player = new Player((window.innerWidth / 2), 87, 83, 65, 68);
         this.items = new Items;
-        this.rijst = this.items.rijst;
     }
     PlayScreen.prototype.update = function () {
         this.items.update();
         this.player.update();
-        if (this.items.rijst.y == 733) {
+        console.log(this.items.rijst.y);
+        if (this.items.rijst.y >= 233) {
             console.log('een punt');
-            this.items.rijst.rijst.remove();
+            this.items.delete();
         }
     };
     return PlayScreen;
@@ -90,12 +95,6 @@ var Player = (function () {
     };
     Player.prototype.onKeyDown = function (e) {
         switch (e.keyCode) {
-            case this.upkey:
-                this.upSpeed = 5;
-                break;
-            case this.downkey:
-                this.downSpeed = 5;
-                break;
             case this.leftkey:
                 this.leftSpeed = 5;
                 break;
@@ -161,10 +160,11 @@ var Rijst = (function () {
     Rijst.prototype.update = function () {
         this.y += this.speedY;
         if (this.y <= window.innerHeight) {
-            console.log(this.y);
-            console.log(this.rijst);
             this.rijst.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
         }
+    };
+    Rijst.prototype.delete = function () {
+        this.rijst.remove();
     };
     return Rijst;
 }());

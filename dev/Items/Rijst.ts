@@ -21,11 +21,12 @@ class Rijst {
     }
     public update() : void {
         this.y += this.speedY
-        if (this.y <= window.innerHeight) { 
-        console.log(this.y)
-        console.log(this.rijst)
-                        
-        this.rijst.style.transform = `translate(${this.x}px, ${this.y}px)` }
+        if (this.y <= window.innerHeight) {                
+        this.rijst.style.transform = `translate(${this.x}px, ${this.y}px)`
+     }
+    }
+    public delete(): void{
+        this.rijst.remove()
     }
 
 }

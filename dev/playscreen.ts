@@ -3,16 +3,15 @@
 class PlayScreen {
 
     private items: Items
-    private rijst: Rijst
     private player: Player
     private game: Game
 
     constructor(g:Game) {
         // player spawn, combi spawn, score aan maken
         this.game = g
+        console.log(this.game)
         this.player = new Player((window.innerWidth / 2), 87, 83, 65, 68)
         this.items = new Items
-        this.rijst = this.items.rijst
     }
     public update(): void {
         // player movement, item spawn, check item pick up
@@ -33,9 +32,10 @@ class PlayScreen {
         // }
         this.items.update()
         this.player.update()
-        if (this.items.rijst.y == 733) {
+        console.log(this.items.rijst.y)
+        if (this.items.rijst.y >= 233) {
             console.log('een punt')
-            this.items.rijst.rijst.remove()
+            this.items.delete()
 
         }
     }

@@ -16,4 +16,8 @@ class Items {
     public update() : void {
         this.rijst.update()
     }
+    public delete() : void{
+        this.rijst.delete()
+        console.log('ik delete alles')
+    }
 }
