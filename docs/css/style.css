@@ -31,10 +31,10 @@ splash {
     text-align:center;
 }
 
-rijst {
-    background-image: url(../images/sushi.png);
-    width:61px; height:71px;
-}
+/* rijst {
+    background-image: url(../images/donut.png);
+    width:82px; height:69px;
+} */
 
 player {
     background-image: url(../images/panda.png);

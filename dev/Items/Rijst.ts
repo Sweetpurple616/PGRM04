@@ -1,17 +1,18 @@
 
 
 class Rijst {
-    rijst:HTMLElement
+    rijst:any;
     x:number
     y:number
     speedX : number
     speedY : number
     constructor(){
         
-    this.rijst = document.createElement("rijst")
+    this.rijst = document.createElement("img")
+    this.rijst.src = 'images/donuts/blue_icing.png';
     document.body.appendChild(this.rijst)
     
-    this.x = 400
+    this.x = (Math.floor(Math.random() * window.innerWidth))
     this.y = 100
 
     this.speedY = 3
@@ -27,6 +28,7 @@ class Rijst {
     }
     public delete(): void{
         this.rijst.remove()
+        
     }
 
 }

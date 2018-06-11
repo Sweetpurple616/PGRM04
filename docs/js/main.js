@@ -1,19 +1,23 @@
 "use strict";
-var Items = (function () {
-    function Items() {
+var Item = (function () {
+    function Item() {
         this.rijst = new Rijst();
     }
-    Items.prototype.update = function () {
+    Item.prototype.update = function () {
         this.rijst.update();
     };
-    Items.prototype.delete = function () {
+    Item.prototype.delete = function () {
         this.rijst.delete();
         console.log('ik delete alles');
     };
-    return Items;
+    return Item;
 }());
 var Score = (function () {
     function Score() {
+        this.score = 0;
+        this.scoreElement = document.createElement('h1');
+        this.scoreElement.innerHTML = this.score;
+        document.body.appendChild(this.scoreElement);
     }
     return Score;
 }());
@@ -22,15 +26,17 @@ var PlayScreen = (function () {
         this.game = g;
         console.log(this.game);
         this.player = new Player((window.innerWidth / 2), 87, 83, 65, 68);
-        this.items = new Items;
+        this.item = new Item;
+        this.score = new Score;
+        console.log(this.score);
     }
     PlayScreen.prototype.update = function () {
-        this.items.update();
+        this.item.update();
         this.player.update();
-        console.log(this.items.rijst.y);
-        if (this.items.rijst.y >= 233) {
+        console.log(this.item.rijst.y);
+        if (this.item.rijst.y >= 233) {
             console.log('een punt');
-            this.items.delete();
+            this.item.delete();
         }
     };
     return PlayScreen;
@@ -137,7 +143,7 @@ var StartScreen = (function () {
         this.div = document.createElement("splash");
         document.body.appendChild(this.div);
         this.div.addEventListener("click", function () { return _this.splashClicked(); });
-        this.div.innerHTML = "Maak de juiste combinaties";
+        this.div.innerHTML = "Verzamel alle donuts";
     }
     StartScreen.prototype.update = function () {
     };
@@ -148,9 +154,10 @@ var StartScreen = (function () {
 }());
 var Rijst = (function () {
     function Rijst() {
-        this.rijst = document.createElement("rijst");
+        this.rijst = document.createElement("img");
+        this.rijst.src = 'images/donuts/blue_icing.png';
         document.body.appendChild(this.rijst);
-        this.x = 400;
+        this.x = (Math.floor(Math.random() * window.innerWidth));
         this.y = 100;
         this.speedY = 3;
     }
