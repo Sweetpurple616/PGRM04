@@ -47,10 +47,10 @@ class Player {
             //     this.downSpeed = 5
             //     break
             case this.leftkey:
-                this.leftSpeed = 5
+                this.leftSpeed = 8
                 break
             case this.rightkey:
-                this.rightSpeed = 5
+                this.rightSpeed = 8
                 break
         }
     }
@@ -79,7 +79,7 @@ class Player {
         // als de paddle binnen beeld blijft, dan ook echt updaten
         if (newY > 0 && newY + 100 < window.innerHeight) this.y = newY
         if (newX > 0 && newX + 100 < window.innerWidth) this.x = newX
-
+        console.log(this.x)
         this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
     }
     

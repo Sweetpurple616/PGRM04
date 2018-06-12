@@ -13,6 +13,18 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+h2{
+    position: absolute;
+    top:160px;
+    color: black
+}
+h3{
+    color:black;
+    position: absolute;
+    top:120px;
+    left: 10px;
+
+}
 
 body * {
     position: absolute;

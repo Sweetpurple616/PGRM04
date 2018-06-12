@@ -4,10 +4,15 @@ var Item = (function () {
         this.item = document.createElement("img");
         this.item.src = this.random();
         document.body.appendChild(this.item);
-        this.x = (Math.floor(Math.random() * (window.innerWidth - 82)));
-        this.y = 100;
-        this.speedY = (Math.floor(Math.random() * 4) + 2);
+        this.x = this.randomX();
+        this.y = 0;
+        this.speedY = (Math.floor(Math.random() * 3) + 2);
     }
+    Item.prototype.randomX = function () {
+        var min = Math.ceil(300);
+        var max = Math.floor(1150);
+        return Math.floor(Math.random() * (max - min)) + min;
+    };
     Item.prototype.random = function () {
         var imageLink;
         var rnumber = Math.floor(Math.random() * 12);
@@ -51,6 +56,9 @@ var Item = (function () {
         }
         return imageLink;
     };
+    Item.prototype.getRectangle = function () {
+        return this.item.getBoundingClientRect();
+    };
     Item.prototype.update = function () {
         this.y += this.speedY;
         if (this.y <= window.innerHeight) {
@@ -58,31 +66,78 @@ var Item = (function () {
         }
     };
     Item.prototype.delete = function () {
-        console.log('ik delete alles');
+        this.item.remove();
     };
     return Item;
 }());
 var Score = (function () {
     function Score() {
         this.score = 0;
+        this.highscore = 0;
         this.scoreElement = document.createElement('h1');
         this.scoreElement.innerHTML = this.score;
         document.body.appendChild(this.scoreElement);
+        this.hg = document.createElement('h3');
+        this.hg.innerHTML = 'highscore';
+        document.body.appendChild(this.hg);
+        this.highscoreElement = document.createElement('h2');
+        this.highscoreElement.innerHTML = this.highscore;
+        document.body.appendChild(this.highscoreElement);
+        if (localStorage.getItem('highscore')) {
+            this.highscore = localStorage.getItem('highscore');
+            this.highscoreElement.innerHTML = this.highscore;
+        }
     }
+    Score.prototype.update = function (punten) {
+        this.scoreElement.innerHTML = punten;
+    };
+    Score.prototype.save = function (eindscore) {
+        if (eindscore > this.highscore)
+            localStorage.setItem('highscore', eindscore);
+    };
     return Score;
 }());
 var PlayScreen = (function () {
     function PlayScreen(g) {
+        this.items = [];
+        this.p = -1;
+        this.punten = -1;
         this.game = g;
         console.log(this.game);
         this.player = new Player((window.innerWidth / 2), 87, 83, 65, 68);
-        this.item = new Item;
         this.score = new Score;
         console.log(this.score);
     }
     PlayScreen.prototype.update = function () {
-        this.item.update();
+        this.p++;
+        if ((this.p % 120) == 0) {
+            this.items.push(new Item());
+        }
+        for (var i = this.items.length - 1; i >= 0; i--) {
+            if (this.checkCollision(this.items[i].getRectangle(), this.player.getRectangle())) {
+                console.log(this.items[i]);
+                console.log(i);
+                this.punten++;
+                this.score.update(this.punten);
+                this.items[i].delete();
+                this.items.splice(i, 1);
+                break;
+            }
+            if (this.items[i].getRectangle().bottom > window.innerHeight) {
+                this.game.showGameoverScreen();
+                this.score.save(this.punten);
+            }
+            console.log(this.items[i]);
+            this.items[i].update();
+            console.log(i);
+        }
         this.player.update();
+    };
+    PlayScreen.prototype.checkCollision = function (a, b) {
+        return (a.left <= b.right &&
+            b.left <= a.right &&
+            a.top <= b.bottom &&
+            b.top <= a.bottom);
     };
     return PlayScreen;
 }());
@@ -114,7 +169,7 @@ var GameOver = (function () {
         this.div = document.createElement("splash");
         document.body.appendChild(this.div);
         this.div.addEventListener("click", function () { return _this.splashClicked(); });
-        this.div.innerHTML = "GAME OVER, MAN";
+        this.div.innerHTML = "GAME OVER";
     }
     GameOver.prototype.update = function () {
     };
@@ -147,10 +202,10 @@ var Player = (function () {
     Player.prototype.onKeyDown = function (e) {
         switch (e.keyCode) {
             case this.leftkey:
-                this.leftSpeed = 5;
+                this.leftSpeed = 8;
                 break;
             case this.rightkey:
-                this.rightSpeed = 5;
+                this.rightSpeed = 8;
                 break;
         }
     };
@@ -177,6 +232,7 @@ var Player = (function () {
             this.y = newY;
         if (newX > 0 && newX + 100 < window.innerWidth)
             this.x = newX;
+        console.log(this.x);
         this.div.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
     };
     return Player;
