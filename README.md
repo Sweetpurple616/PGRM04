@@ -15,7 +15,7 @@ http://zoehey.nl/game/docs/
 
 - [ ] Er zijn geen bugs. 
 
-- [ ] Het project maakt gebruik van deze OOP principes. 
+Het project maakt gebruik van deze OOP principes. 
 
 - [x] Classes 
 
