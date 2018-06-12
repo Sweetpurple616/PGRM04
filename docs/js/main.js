@@ -1,13 +1,63 @@
 "use strict";
 var Item = (function () {
     function Item() {
-        this.rijst = new Rijst();
+        this.item = document.createElement("img");
+        this.item.src = this.random();
+        document.body.appendChild(this.item);
+        this.x = (Math.floor(Math.random() * (window.innerWidth - 82)));
+        this.y = 100;
+        this.speedY = (Math.floor(Math.random() * 4) + 2);
     }
+    Item.prototype.random = function () {
+        var imageLink;
+        var rnumber = Math.floor(Math.random() * 12);
+        switch (rnumber) {
+            case 0:
+                imageLink = 'images/donuts/blue_icing.png';
+                break;
+            case 1:
+                imageLink = 'images/donuts/chocolate_icing_chocolate_drizzle.png';
+                break;
+            case 2:
+                imageLink = 'images/donuts/chocolate_icing.png';
+                break;
+            case 3:
+                imageLink = 'images/donuts/dark_red_icing.png';
+                break;
+            case 4:
+                imageLink = 'images/donuts/green_icing_green_sprinkles.png';
+                break;
+            case 5:
+                imageLink = 'images/donuts/orange_icing_chocolate_shaving.png';
+                break;
+            case 6:
+                imageLink = 'images/donuts/pink_icing_sprinkles.png';
+                break;
+            case 7:
+                imageLink = 'images/donuts/pink_icing_white_drizzle.png';
+                break;
+            case 8:
+                imageLink = 'images/donuts/red_icing_white_sprinkles.png';
+                break;
+            case 9:
+                imageLink = 'images/donuts/white_icing_sprinkles.png';
+                break;
+            case 10:
+                imageLink = 'images/donuts/white_icing.png';
+                break;
+            case 11:
+                imageLink = 'images/donuts/yellow_icing_chocolate_drizzle.png';
+                break;
+        }
+        return imageLink;
+    };
     Item.prototype.update = function () {
-        this.rijst.update();
+        this.y += this.speedY;
+        if (this.y <= window.innerHeight) {
+            this.item.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
+        }
     };
     Item.prototype.delete = function () {
-        this.rijst.delete();
         console.log('ik delete alles');
     };
     return Item;
@@ -33,11 +83,6 @@ var PlayScreen = (function () {
     PlayScreen.prototype.update = function () {
         this.item.update();
         this.player.update();
-        console.log(this.item.rijst.y);
-        if (this.item.rijst.y >= 233) {
-            console.log('een punt');
-            this.item.delete();
-        }
     };
     return PlayScreen;
 }());
@@ -151,28 +196,5 @@ var StartScreen = (function () {
         this.game.showPlayScreen();
     };
     return StartScreen;
-}());
-var Rijst = (function () {
-    function Rijst() {
-        this.rijst = document.createElement("img");
-        this.rijst.src = 'images/donuts/blue_icing.png';
-        document.body.appendChild(this.rijst);
-        this.x = (Math.floor(Math.random() * window.innerWidth));
-        this.y = 100;
-        this.speedY = 3;
-    }
-    Rijst.prototype.getRectangle = function () {
-        return this.rijst.getBoundingClientRect();
-    };
-    Rijst.prototype.update = function () {
-        this.y += this.speedY;
-        if (this.y <= window.innerHeight) {
-            this.rijst.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
-        }
-    };
-    Rijst.prototype.delete = function () {
-        this.rijst.remove();
-    };
-    return Rijst;
 }());
 //# sourceMappingURL=main.js.map

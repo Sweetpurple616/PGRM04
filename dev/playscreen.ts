@@ -35,12 +35,12 @@ class PlayScreen {
         // }
         this.item.update()
         this.player.update()
-        console.log(this.item.rijst.y)
-        if (this.item.rijst.y >= 233) {
-            console.log('een punt')
-            this.item.delete()
+        // console.log(this.item.rijst.y)
+        // if (this.item.rijst.y >= 233) {
+        //     console.log('een punt')
+        //     this.item.delete()
 
-        }
+        // }
     }
 
     // private checkCollision(a: ClientRect, b: ClientRect) {
