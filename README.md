@@ -52,4 +52,5 @@ https://github.com/Rovexx/CLE4-Programmeren/issues/1
 
 ## Extra uitdaging
 
-Licht toe welke extra uitdaging uit de modulewijzer je hebt toegepast.
+Mijn extra uitdaging : De game bevat een highscore lijst. Scores worden bewaard nadat de game is afgesloten.
+
