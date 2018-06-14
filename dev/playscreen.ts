@@ -13,7 +13,7 @@ class PlayScreen {
         // player spawn, combi spawn, score aan maken
         this.game = g
         console.log(this.game)
-        this.player = new Player((window.innerWidth / 2), 87, 83, 65, 68)
+        this.player = new Player()
         this.score = new Score
         console.log(this.score)
         

@@ -1,12 +1,33 @@
 "use strict";
-var Item = (function () {
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var Gameobject = (function () {
+    function Gameobject() {
+    }
+    Gameobject.prototype.getRectangle = function () {
+        return this.div.getBoundingClientRect();
+    };
+    return Gameobject;
+}());
+var Item = (function (_super) {
+    __extends(Item, _super);
     function Item() {
-        this.item = document.createElement("img");
-        this.item.src = this.random();
-        document.body.appendChild(this.item);
-        this.x = this.randomX();
-        this.y = 0;
-        this.speedY = (Math.floor(Math.random() * 3) + 2);
+        var _this = _super.call(this) || this;
+        _this.div = document.createElement("img");
+        _this.div.src = _this.random();
+        document.body.appendChild(_this.div);
+        _this.x = _this.randomX();
+        _this.y = 0;
+        _this.speedY = (Math.floor(Math.random() * 3) + 2);
+        return _this;
     }
     Item.prototype.randomX = function () {
         var min = Math.ceil(300);
@@ -56,20 +77,17 @@ var Item = (function () {
         }
         return imageLink;
     };
-    Item.prototype.getRectangle = function () {
-        return this.item.getBoundingClientRect();
-    };
     Item.prototype.update = function () {
         this.y += this.speedY;
         if (this.y <= window.innerHeight) {
-            this.item.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
+            this.div.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
         }
     };
     Item.prototype.delete = function () {
-        this.item.remove();
+        this.div.remove();
     };
     return Item;
-}());
+}(Gameobject));
 var Score = (function () {
     function Score() {
         this.score = 0;
@@ -104,7 +122,7 @@ var PlayScreen = (function () {
         this.punten = -1;
         this.game = g;
         console.log(this.game);
-        this.player = new Player((window.innerWidth / 2), 87, 83, 65, 68);
+        this.player = new Player();
         this.score = new Score;
         console.log(this.score);
     }
@@ -178,27 +196,26 @@ var GameOver = (function () {
     };
     return GameOver;
 }());
-var Player = (function () {
-    function Player(xp, up, down, left, right) {
-        var _this = this;
-        this.downSpeed = 0;
-        this.upSpeed = 0;
-        this.leftSpeed = 0;
-        this.rightSpeed = 0;
-        this.div = document.createElement("player");
-        document.body.appendChild(this.div);
-        this.upkey = up;
-        this.downkey = down;
-        this.leftkey = left;
-        this.rightkey = right;
-        this.x = xp;
-        this.y = 600;
+var Player = (function (_super) {
+    __extends(Player, _super);
+    function Player() {
+        var _this = _super.call(this) || this;
+        _this.downkey = 83;
+        _this.upkey = 87;
+        _this.leftkey = 65;
+        _this.rightkey = 68;
+        _this.downSpeed = 0;
+        _this.upSpeed = 0;
+        _this.leftSpeed = 0;
+        _this.rightSpeed = 0;
+        _this.div = document.createElement("player");
+        document.body.appendChild(_this.div);
+        _this.x = (window.innerWidth / 2);
+        _this.y = 600;
         window.addEventListener("keydown", function (e) { return _this.onKeyDown(e); });
         window.addEventListener("keyup", function (e) { return _this.onKeyUp(e); });
+        return _this;
     }
-    Player.prototype.getRectangle = function () {
-        return this.div.getBoundingClientRect();
-    };
     Player.prototype.onKeyDown = function (e) {
         switch (e.keyCode) {
             case this.leftkey:
@@ -236,7 +253,7 @@ var Player = (function () {
         this.div.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
     };
     return Player;
-}());
+}(Gameobject));
 var StartScreen = (function () {
     function StartScreen(g) {
         var _this = this;

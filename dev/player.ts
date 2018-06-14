@@ -1,41 +1,30 @@
+/// <reference path="gameObject.ts"/>
 
-class Player {
-    
-    private div:HTMLElement
-    
-    private downkey : number
-    private upkey   : number
-    private leftkey : number
-    private rightkey: number
+class Player extends Gameobject {
+        
+    private downkey : number = 83
+    private upkey   : number = 87
+    private leftkey : number = 65
+    private rightkey: number = 68
     
     private downSpeed   : number = 0
     private upSpeed     : number = 0
     private leftSpeed : number = 0
     private rightSpeed: number = 0
     
-    private x : number
-    private y : number
     
-    constructor(xp:number, up:number, down:number, left:number, right:number)  {
+    constructor()  {
+        super()
         this.div = document.createElement("player")
         document.body.appendChild(this.div)
         
-        this.upkey   = up
-        this.downkey = down
-        this.leftkey = left
-        this.rightkey = right
-        
-        this.x      = xp
+        this.x      = (window.innerWidth / 2)
         this.y      = 600
         
         window.addEventListener("keydown", (e: KeyboardEvent) => this.onKeyDown(e))
         window.addEventListener("keyup", (e: KeyboardEvent) => this.onKeyUp(e))
 
         
-    }
-
-    public getRectangle() {
-        return this.div.getBoundingClientRect()
     }
 
     private onKeyDown(e: KeyboardEvent): void {
