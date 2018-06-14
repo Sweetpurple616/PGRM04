@@ -23,7 +23,7 @@ Het project maakt gebruik van deze OOP principes.
 
 - [x] Composition 
 
-- [ ] Inheritance 
+- [x] Inheritance 
 
 De GitHub pagina bevat een ReadMe bestand. Dit bestand bevat: 
 
@@ -38,8 +38,10 @@ De GitHub pagina bevat een ReadMe bestand. Dit bestand bevat:
 Licht toe waar en waarom je deze OOP principes hebt toegepast
 
 - Classes
-    Al mijn game elementen staan in classes, een voorbeeld hiervan is de class player, hierin staan de eigenschappen en het gedrag van de player.
+    Al mijn game elementen staan in classes, een voorbeeld hiervan is de class player, hierin staan de eigenschappen en het gedrag van       de player.
+    
 - Encapsulation 
+
 - Composition
 - Inheritance
 
