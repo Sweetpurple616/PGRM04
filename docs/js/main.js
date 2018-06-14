@@ -95,9 +95,9 @@ var Score = (function () {
         this.scoreElement = document.createElement('h1');
         this.scoreElement.innerHTML = this.score;
         document.body.appendChild(this.scoreElement);
-        this.hg = document.createElement('h3');
-        this.hg.innerHTML = 'highscore';
-        document.body.appendChild(this.hg);
+        this.div = document.createElement('h3');
+        this.div.innerHTML = 'highscore';
+        document.body.appendChild(this.div);
         this.highscoreElement = document.createElement('h2');
         this.highscoreElement.innerHTML = this.highscore;
         document.body.appendChild(this.highscoreElement);
@@ -200,12 +200,8 @@ var Player = (function (_super) {
     __extends(Player, _super);
     function Player() {
         var _this = _super.call(this) || this;
-        _this.downkey = 83;
-        _this.upkey = 87;
         _this.leftkey = 65;
         _this.rightkey = 68;
-        _this.downSpeed = 0;
-        _this.upSpeed = 0;
         _this.leftSpeed = 0;
         _this.rightSpeed = 0;
         _this.div = document.createElement("player");
@@ -228,12 +224,6 @@ var Player = (function (_super) {
     };
     Player.prototype.onKeyUp = function (e) {
         switch (e.keyCode) {
-            case this.upkey:
-                this.upSpeed = 0;
-                break;
-            case this.downkey:
-                this.downSpeed = 0;
-                break;
             case this.leftkey:
                 this.leftSpeed = 0;
                 break;
@@ -243,13 +233,9 @@ var Player = (function (_super) {
         }
     };
     Player.prototype.update = function () {
-        var newY = this.y - this.upSpeed + this.downSpeed;
         var newX = this.x - this.leftSpeed + this.rightSpeed;
-        if (newY > 0 && newY + 100 < window.innerHeight)
-            this.y = newY;
         if (newX > 0 && newX + 100 < window.innerWidth)
             this.x = newX;
-        console.log(this.x);
         this.div.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
     };
     return Player;

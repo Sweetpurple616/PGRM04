@@ -1,19 +1,21 @@
 
 
 class Score {
-    scoreElement:any;
-    score:any = 0;
-    highscore:any = 0;
-    highscoreElement:any;
-    hg:any;
+
+    private scoreElement:any;
+    private score:any = 0;
+    private highscore:any = 0;
+    private highscoreElement:any;
+    private div:any;
+
     constructor(){
     this.scoreElement = document.createElement('h1');
     this.scoreElement.innerHTML = this.score;
     document.body.appendChild(this.scoreElement)
 
-    this.hg = document.createElement('h3');
-    this.hg.innerHTML = 'highscore'
-    document.body.appendChild(this.hg)
+    this.div = document.createElement('h3');
+    this.div.innerHTML = 'highscore'
+    document.body.appendChild(this.div)
 
     this.highscoreElement = document.createElement('h2');
     this.highscoreElement.innerHTML = this.highscore;

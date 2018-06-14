@@ -1,4 +1,3 @@
-// <reference path="screen.ts"/>
 
 class GameOver {
 

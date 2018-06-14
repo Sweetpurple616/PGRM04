@@ -38,12 +38,16 @@ De GitHub pagina bevat een ReadMe bestand. Dit bestand bevat:
 Licht toe waar en waarom je deze OOP principes hebt toegepast
 
 - Classes
-    Al mijn game elementen staan in classes, een voorbeeld hiervan is de class player, hierin staan de eigenschappen en het gedrag van       de player.
+    Al mijn game elementen staan in classes, een voorbeeld hiervan is de class player, hierin staan de eigenschappen en het gedrag van de player.
     
 - Encapsulation 
+    In mijn classes maak ik gebruik private, public en protected functies en variables.
 
 - Composition
+
+
 - Inheritance
+    Ik heb een class genaamd Gameobject deze heb ik gelinkt aan de player en items. Ik heb daar een aantal variables die ik daar declare, en de functie getRect.
 
 ## Klassendiagram
 
