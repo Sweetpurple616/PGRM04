@@ -29,7 +29,7 @@ De GitHub pagina bevat een ReadMe bestand. Dit bestand bevat:
 
 - [ ] Per bovengenoemd OOP principe een uitleg: waar is het toegepast, en waarom is het op die plek toegepast. De uitleg is inclusief code voorbeelden. 
 
-- [ ] Een klassendiagram van de game. 
+- [x] Een klassendiagram van de game. 
 
 - [x] Een link naar de peer review die in week 6 is gedaan
 
