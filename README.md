@@ -51,7 +51,7 @@ Licht toe waar en waarom je deze OOP principes hebt toegepast
 
 ## Klassendiagram
 
-Een klassendiagram van de game.
+![Klassendiagram](http://url/to/img.png)
 
 ## Peer review
 
