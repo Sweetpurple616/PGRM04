@@ -51,7 +51,7 @@ Licht toe waar en waarom je deze OOP principes hebt toegepast
 
 ## Klassendiagram
 
-![Klassendiagram](http://url/to/img.png)
+![Klassendiagram](https://stud.hosted.hr.nl/0948132/wp-content/uploads/2018/06/uml.png)
 
 ## Peer review
 
