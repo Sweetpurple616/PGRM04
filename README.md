@@ -13,7 +13,7 @@ http://zoehey.nl/game/docs/
 
 - [x] De game heeft een startscherm en een eindscherm. 
 
-- [ ] Er zijn geen bugs. 
+- [x] Er zijn geen bugs. 
 
 Het project maakt gebruik van deze OOP principes. 
 
