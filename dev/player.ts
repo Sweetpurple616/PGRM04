@@ -1,6 +1,6 @@
 /// <reference path="gameObject.ts"/>
 
-class Player extends Gameobject {
+class Player extends GameObject {
     
     private leftkey : number = 65
     private rightkey: number = 68

@@ -9,13 +9,29 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var Gameobject = (function () {
-    function Gameobject() {
+var GameOver = (function () {
+    function GameOver(g) {
+        var _this = this;
+        this.game = g;
+        this.div = document.createElement("splash");
+        document.body.appendChild(this.div);
+        this.div.addEventListener("click", function () { return _this.splashClicked(); });
+        this.div.innerHTML = "GAME OVER";
     }
-    Gameobject.prototype.getRectangle = function () {
+    GameOver.prototype.update = function () {
+    };
+    GameOver.prototype.splashClicked = function () {
+        this.game.showPlayScreen();
+    };
+    return GameOver;
+}());
+var GameObject = (function () {
+    function GameObject() {
+    }
+    GameObject.prototype.getRectangle = function () {
         return this.div.getBoundingClientRect();
     };
-    return Gameobject;
+    return GameObject;
 }());
 var Item = (function (_super) {
     __extends(Item, _super);
@@ -87,7 +103,7 @@ var Item = (function (_super) {
         this.div.remove();
     };
     return Item;
-}(Gameobject));
+}(GameObject));
 var Score = (function () {
     function Score() {
         this.score = 0;
@@ -180,22 +196,6 @@ var Game = (function () {
     return Game;
 }());
 window.addEventListener("load", function () { return new Game(); });
-var GameOver = (function () {
-    function GameOver(g) {
-        var _this = this;
-        this.game = g;
-        this.div = document.createElement("splash");
-        document.body.appendChild(this.div);
-        this.div.addEventListener("click", function () { return _this.splashClicked(); });
-        this.div.innerHTML = "GAME OVER";
-    }
-    GameOver.prototype.update = function () {
-    };
-    GameOver.prototype.splashClicked = function () {
-        this.game.showPlayScreen();
-    };
-    return GameOver;
-}());
 var Player = (function (_super) {
     __extends(Player, _super);
     function Player() {
@@ -239,7 +239,7 @@ var Player = (function (_super) {
         this.div.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
     };
     return Player;
-}(Gameobject));
+}(GameObject));
 var StartScreen = (function () {
     function StartScreen(g) {
         var _this = this;
