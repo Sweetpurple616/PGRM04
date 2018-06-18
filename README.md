@@ -76,7 +76,8 @@ Licht toe waar en waarom je deze OOP principes hebt toegepast
     }
 
 }
-
+```
+```javascript
     class Player extends GameObject {
     
     private leftkey : number = 65
