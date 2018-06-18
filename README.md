@@ -88,6 +88,7 @@ Licht toe waar en waarom je deze OOP principes hebt toegepast
 ```
 
 - Composition
+Ik gebruik composition, de game heeft een playscreen, Het playscreen bevat een speler, items en score
 ```javascript 
 /// <reference path="PlayScreen.ts"/>
 
