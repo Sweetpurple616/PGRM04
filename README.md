@@ -63,7 +63,7 @@ Licht toe waar en waarom je deze OOP principes hebt toegepast
     
 - Encapsulation 
     In mijn classes maak ik gebruik private, public en protected functies en variables.
-  ```javascript 
+```javascript 
     class GameObject {
     protected x: number
     protected y: number
@@ -84,7 +84,7 @@ Licht toe waar en waarom je deze OOP principes hebt toegepast
     
     private leftSpeed : number = 0
     private rightSpeed: number = 0
-    ```
+```
 
 - Composition
 ```javascript 
